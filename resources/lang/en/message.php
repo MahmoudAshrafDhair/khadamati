@@ -41,4 +41,11 @@ return [
     'complaint_link' => 'Complaint Link',
     'welcome' => 'Welcome to the Rating Portal control panel',
     'copywriter' => 'All Rights Reserved To The Rating Portal Site',
+    'code_Verification' => 'Verification Code',
+
+    'account_confirmation' => 'Account Confirmation',
+    'account_confirmation_message' => 'We are glad to have you registered in the Rating Portal',
+    'hello' => 'Hello',
+    'verification_code' => 'Verification code is : ',
+    'thank' => 'Thank you ...',
 ];

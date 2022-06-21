@@ -41,4 +41,12 @@ return [
     'complaint_link' => 'رابط الشكوى',
     'welcome' => 'اهلا و سهلا في لوحة تحكم بوابة التقيم',
     'copywriter' => 'جميع حقوق النشر محفوظة لموقع بوابة التقيم',
+    'code_Verification' => 'كود التحقق',
+
+
+    'account_confirmation' => 'تاكيد الحساب',
+    'account_confirmation_message' => 'سعدنا بتسجيلكم في بوابة تقييم',
+    'hello' => 'مرحبا',
+    'verification_code' => 'كود التحقق هو : ',
+    'thank' => 'شكرا لكم ...',
 ];
