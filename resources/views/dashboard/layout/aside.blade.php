@@ -82,6 +82,27 @@
                     </a>
                 </li>
 
+                <li class="menu-item" aria-haspopup="true">
+                    <a href="{{route('admin.users.index')}}" class="menu-link">
+                        <i class="menu-icon flaticon-earth-globe"></i>
+                        <span class="menu-text">{{__('aside.user')}}</span>
+                    </a>
+                </li>
+
+                <li class="menu-item" aria-haspopup="true">
+                    <a href="{{route('admin.workers.index')}}" class="menu-link">
+                        <i class="menu-icon flaticon-earth-globe"></i>
+                        <span class="menu-text">{{__('aside.worker')}}</span>
+                    </a>
+                </li>
+
+                <li class="menu-item" aria-haspopup="true">
+                    <a href="{{route('admin.sliders.index')}}" class="menu-link">
+                        <i class="menu-icon flaticon-earth-globe"></i>
+                        <span class="menu-text">{{__('aside.slider')}}</span>
+                    </a>
+                </li>
+
 {{--                <li class="menu-item" aria-haspopup="true">--}}
 {{--                    <a href="{{route('admin.days.index')}}" class="menu-link">--}}
 {{--                        <i class="menu-icon flaticon-home"></i>--}}

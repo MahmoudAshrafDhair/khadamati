@@ -4,13 +4,16 @@ namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable,SoftDeletes;
+
+    protected $table = 'users';
 
     /**
      * The attributes that are mass assignable.
@@ -18,10 +21,19 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'username',
         'email',
         'password',
+        'phone',
+        'code',
+        'active',
+        'city_id',
+        'fcm',
+        'image'
     ];
+
+    protected $dates = ['deleted_at'];
+
 
     /**
      * The attributes that should be hidden for serialization.
@@ -41,4 +53,25 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    //////////////////////////////////////// Relation //////////////////////////////////////
+
+    public function city(){
+        return $this->belongsTo(City::class,'city_id','id');
+    }
+
+
+    //////////////////////////////////////// HTML Datatable //////////////////////////////////////
+
+    public function getActionButtonsAttribute()
+    {
+        $button = '';
+//        if (auth('admin')->user()->can('edit city')) {
+        $button .= '<a href="' . route('admin.users.edit', $this->id) . '" class="btn btn-icon btn-xs btn-info"><i class="flaticon2-edit"></i></a>';
+//        }
+//        if (auth('admin')->user()->can('delete city')) {
+        $button .= '&nbsp;&nbsp;<button  title="Delete User" type="button" data-id="' . $this->id . '" data-name="' . $this->username . '" data-toggle="modal" data-target="#deleteModel" class="btn btn-icon btn-xs btn-danger delete-item"><i class="flaticon2-trash"></i></button>';
+//        }
+        return $button;
+    }
 }

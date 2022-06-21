@@ -7,7 +7,10 @@ use App\Http\Controllers\Dashboard\CityController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\DayController;
 use App\Http\Controllers\Dashboard\RoleController;
+use App\Http\Controllers\Dashboard\SliderController;
 use App\Http\Controllers\Dashboard\SubCategoryController;
+use App\Http\Controllers\Dashboard\UserController;
+use App\Http\Controllers\Dashboard\WorkerController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -97,6 +100,36 @@ Route::group(
             Route::get('/edit/{id}', [SubCategoryController::class, 'edit'])->name('admin.sub.categories.edit');
             Route::post('/update/{id}', [SubCategoryController::class, 'update'])->name('admin.sub.categories.update');
             Route::post('/destroy', [SubCategoryController::class, 'destroy'])->name('admin.sub.categories.destroy');
+        });
+
+        /////////////////////////////////////// Users Management //////////////////////////////
+        Route::group(['prefix' => 'users'], function () {
+            Route::get('/', [UserController::class, 'index'])->name('admin.users.index');
+            Route::get('/create', [UserController::class, 'create'])->name('admin.users.create');
+            Route::post('/store', [UserController::class, 'store'])->name('admin.users.store');
+            Route::get('/edit/{id}', [UserController::class, 'edit'])->name('admin.users.edit');
+            Route::post('/update/{id}', [UserController::class, 'update'])->name('admin.users.update');
+            Route::post('/destroy', [UserController::class, 'destroy'])->name('admin.users.destroy');
+        });
+
+        /////////////////////////////////////// Worker Management //////////////////////////////
+        Route::group(['prefix' => 'workers'], function () {
+            Route::get('/', [WorkerController::class, 'index'])->name('admin.workers.index');
+            Route::get('/create', [WorkerController::class, 'create'])->name('admin.workers.create');
+            Route::post('/store', [WorkerController::class, 'store'])->name('admin.workers.store');
+            Route::get('/edit/{id}', [WorkerController::class, 'edit'])->name('admin.workers.edit');
+            Route::post('/update/{id}', [WorkerController::class, 'update'])->name('admin.workers.update');
+            Route::post('/destroy', [WorkerController::class, 'destroy'])->name('admin.workers.destroy');
+        });
+
+        /////////////////////////////////////// Slider Management //////////////////////////////
+        Route::group(['prefix' => 'sliders'], function () {
+            Route::get('/', [SliderController::class, 'index'])->name('admin.sliders.index');
+            Route::get('/create', [SliderController::class, 'create'])->name('admin.sliders.create');
+            Route::post('/store', [SliderController::class, 'store'])->name('admin.sliders.store');
+            Route::get('/edit/{id}', [SliderController::class, 'edit'])->name('admin.sliders.edit');
+            Route::post('/update/{id}', [SliderController::class, 'update'])->name('admin.sliders.update');
+            Route::post('/destroy', [SliderController::class, 'destroy'])->name('admin.sliders.destroy');
         });
 
     });

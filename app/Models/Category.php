@@ -4,17 +4,27 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Translatable\HasTranslations;
 
 class Category extends Model
 {
-    use HasFactory, HasTranslations;
+    use HasFactory, HasTranslations,SoftDeletes;
 
     protected $table = 'categories';
 
     public $translatable = ['name'];
 
     protected $fillable = ['name', 'image'];
+    protected $dates = ['deleted_at'];
+
+    protected static function boot()
+    {
+        parent::boot();
+        static::deleted(function ($category){
+            $category->subCategories()->delete();
+        });
+    }
 
     //////////////////////////////////////// Relation //////////////////////////////////////
 

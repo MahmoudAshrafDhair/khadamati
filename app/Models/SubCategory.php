@@ -4,11 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Translatable\HasTranslations;
 
 class SubCategory extends Model
 {
-    use HasFactory, HasTranslations;
+    use HasFactory, HasTranslations,SoftDeletes;
 
     protected $table = 'sub_categories';
 
@@ -16,10 +17,23 @@ class SubCategory extends Model
 
     protected $fillable = ['name', 'image','category_id'];
 
+    protected $dates = ['deleted_at'];
+
+    protected static function boot()
+    {
+        parent::boot();
+        static::deleted(function ($subCategory){
+            $subCategory->workers()->delete();
+        });
+    }
+
     //////////////////////////////////////// Relation //////////////////////////////////////
 
     public function category(){
         return $this->belongsTo(Category::class,'category_id','id');
+    }
+    public function workers(){
+        return $this->hasMany(Worker::class,'subCategory_id','id');
     }
 
     //////////////////////////////////////// HTML Datatable //////////////////////////////////////

@@ -4,11 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Translatable\HasTranslations;
 
 class City extends Model
 {
-    use HasFactory, HasTranslations;
+    use HasFactory, HasTranslations,SoftDeletes;
 
     protected $table = 'cities';
 
@@ -16,8 +17,24 @@ class City extends Model
 
     protected $fillable = ['name'];
 
-    //////////////////////////////////////// Relation //////////////////////////////////////
+    protected $dates = ['deleted_at'];
 
+    protected static function boot()
+    {
+        parent::boot();
+        static::deleted(function ($city){
+            $city->users()->delete();
+        });
+    }
+
+    //////////////////////////////////////// Relation //////////////////////////////////////
+    public function users(){
+        return $this->hasMany(User::class,'city_id','id');
+    }
+
+    public function workers(){
+        return $this->hasMany(Worker::class,'city_id','id');
+    }
 
 
 //////////////////////////////////////// HTML Datatable //////////////////////////////////////
