@@ -17,9 +17,10 @@ use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 
-Route::get('/test', function () {
-    Auth::guard('admin')->logout();
-    return view('dashboard.auth.login');
+Route::get('/admin/test', function () {
+//    Auth::guard('admin')->logout();
+//    return view('dashboard.auth.login');
+    return "ok";
 });
 
 Route::get('/foo', function () {

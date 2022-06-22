@@ -75,9 +75,55 @@
 <!--end::Page Scripts-->
 
 {{--@jquery--}}
+{{--<!-- The core Firebase JS SDK is always required and must be listed first -->--}}
+{{--<script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>--}}
+{{--<script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-messaging.js"></script>--}}
 
+{{--<!-- https://firebase.google.com/docs/web/setup#available-libraries -->--}}
+{{--<script>--}}
+{{--    // Your web app's Firebase configuration--}}
+{{--    var firebaseConfig = {--}}
+{{--        apiKey: "AIzaSyDa-Mt_Z2_e49PCYE-vjGnw3nkJJ86nYFQ",--}}
+{{--        authDomain: "laravel-25776.firebaseapp.com",--}}
+{{--        projectId: "laravel-25776",--}}
+{{--        storageBucket: "laravel-25776.appspot.com",--}}
+{{--        messagingSenderId: "433141213721",--}}
+{{--        appId: "1:433141213721:web:6285804aadb32becfed888",--}}
+{{--        measurementId: "G-HVKDMGBTVL"--}}
+{{--    };--}}
+{{--    // Initialize Firebase--}}
+{{--    firebase.initializeApp(firebaseConfig);--}}
+
+{{--    const messaging = firebase.messaging();--}}
+
+{{--    function initFirebaseMessagingRegistration() {--}}
+{{--        messaging.requestPermission().then(function () {--}}
+{{--            return messaging.getToken()--}}
+{{--        }).then(function(token) {--}}
+
+{{--            axios.post("{{ route('fcmToken') }}",{--}}
+{{--                _method:"PATCH",--}}
+{{--                token--}}
+{{--            }).then(({data})=>{--}}
+{{--                console.log(data)--}}
+{{--            }).catch(({response:{data}})=>{--}}
+{{--                console.error(data)--}}
+{{--            })--}}
+
+{{--        }).catch(function (err) {--}}
+{{--            console.log(`Token Error :: ${err}`);--}}
+{{--        });--}}
+{{--    }--}}
+
+{{--    initFirebaseMessagingRegistration();--}}
+
+{{--    messaging.onMessage(function({data:{body,title}}){--}}
+{{--        new Notification(title, {body});--}}
+{{--    });--}}
+{{--</script>--}}
 
 @yield('script')
+
 @toastr_js
 @toastr_render
 

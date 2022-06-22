@@ -54,7 +54,6 @@ function fcmPushToAll($topicName,$title ,$message)
                 'badge' => 1,
                 "click_action" => 'FLUTTER_NOTIFICATION_CLICK',
 
-
             ]
         ];
         //return $notification;
