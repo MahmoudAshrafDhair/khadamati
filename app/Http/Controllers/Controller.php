@@ -11,6 +11,8 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
+    protected int $perPage = 10;
+
     public function sendResponse($result,$message,$code = 200){
         $response = [
             'success' => true,

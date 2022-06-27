@@ -11,5 +11,5 @@ return [
     'mimes' => 'This Field Must Be format is (jpeg,png,jpg,gif,svg)',
     'login' => 'You are not authorized to enter, please verify the data',
     'login_successfully' => 'Login Successfully',
-
+    'confirmed' => 'Password does not match',
 ];

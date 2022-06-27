@@ -28,8 +28,8 @@ class WorkerRequest extends FormRequest
             'password' => 'required_without:id',
             'city_id' => 'required',
             'subCategory_id' => 'required',
-            'phone' =>'required|unique:users,phone,' . $this->id,
-            'email' => 'required|email|unique:users,email,' . $this->id,
+            'phone' =>'required|unique:workers,phone,' . $this->id,
+            'email' => 'required|email|unique:workers,email,' . $this->id,
             'image' => 'required_without:id|image|mimes:jpg,png,jpeg,gif,svg',
         ];
     }

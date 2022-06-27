@@ -54,10 +54,26 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    protected static function boot()
+    {
+        parent::boot();
+        static::deleted(function ($user){
+            $user->orders()->delete();
+            $user->rates()->delete();
+        });
+    }
+
     //////////////////////////////////////// Relation //////////////////////////////////////
 
     public function city(){
         return $this->belongsTo(City::class,'city_id','id');
+    }
+    public function orders(){
+        return $this->hasMany(Order::class,'user_id','id');
+    }
+
+    public function rates(){
+        return $this->hasMany(Rate::class,'user_id','id');
     }
 
 

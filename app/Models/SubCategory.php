@@ -15,7 +15,7 @@ class SubCategory extends Model
 
     public $translatable = ['name'];
 
-    protected $fillable = ['name', 'image','category_id'];
+    protected $fillable = ['name', 'image','category_id','order_total'];
 
     protected $dates = ['deleted_at'];
 
@@ -24,6 +24,7 @@ class SubCategory extends Model
         parent::boot();
         static::deleted(function ($subCategory){
             $subCategory->workers()->delete();
+            $subCategory->orders()->delete();
         });
     }
 
@@ -34,6 +35,10 @@ class SubCategory extends Model
     }
     public function workers(){
         return $this->hasMany(Worker::class,'subCategory_id','id');
+    }
+
+    public function orders(){
+        return $this->hasMany(Order::class,'subCategory_id','id');
     }
 
     //////////////////////////////////////// HTML Datatable //////////////////////////////////////

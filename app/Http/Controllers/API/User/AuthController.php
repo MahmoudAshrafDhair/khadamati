@@ -132,5 +132,9 @@ class AuthController extends Controller
         return $this->sendResponse([],__('api.logout_success'));
     }
 
+    public function showMessage(){
+        return $this->sendResponse([],"NotAuthr");
+    }
+
 
 }

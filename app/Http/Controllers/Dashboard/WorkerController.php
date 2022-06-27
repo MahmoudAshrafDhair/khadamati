@@ -37,7 +37,12 @@ class WorkerController extends Controller
                 ->escapeColumns([])
                 ->addIndexColumn()
                 ->addColumn('image',function ($worker){
-                    return '<img src="'.asset('storage/'.$worker->image).'" class="img-thumbnail" alt="..." width="70" height="40">';
+                    if ($worker->image == null) {
+                        return '<img src="'. asset('assets/image/guest-user.jpg').'" class="img-thumbnail" alt="..." width="70" height="40">';
+                    }else{
+                        return '<img src="'. asset('storage/'.$worker->image).'" class="img-thumbnail" alt="..." width="70" height="40">';
+                    }
+
                 })
                 ->addColumn('service',function ($worker){
                     return $worker->subCategory->getTranslation('name', app()->getLocale());
@@ -64,6 +69,7 @@ class WorkerController extends Controller
         }
         $data['password'] = Hash::make($request->password);
         $data['code'] = 1;
+        $data['active'] = 1;
         Worker::query()->create($data);
         toastr()->success(__('message.add_toastr'));
         return redirect()->route('admin.workers.index');

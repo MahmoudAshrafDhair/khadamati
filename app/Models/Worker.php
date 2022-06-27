@@ -28,6 +28,27 @@ class Worker extends Model
     ];
     protected $dates = ['deleted_at'];
 
+    protected $appends = ['rate_average'];
+
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
+
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
+
+    protected static function boot()
+    {
+        parent::boot();
+        static::deleted(function ($worker){
+            $worker->orders()->delete();
+            $worker->rates()->delete();
+            $worker->appointments()->delete();
+        });
+    }
+
     //////////////////////////////////////// Relation //////////////////////////////////////
 
     public function city(){
@@ -36,6 +57,18 @@ class Worker extends Model
 
     public function subCategory(){
         return $this->belongsTo(SubCategory::class,'subCategory_id','id');
+    }
+
+    public function orders(){
+        return $this->hasMany(Order::class,'worker_id','id');
+    }
+
+    public function rates(){
+        return $this->hasMany(Rate::class,'worker_id','id');
+    }
+
+    public function appointments(){
+        return $this->hasMany(Appointment::class,'worker_id','id');
     }
 
 
@@ -51,5 +84,11 @@ class Worker extends Model
         $button .= '&nbsp;&nbsp;<button  title="Delete Worker" type="button" data-id="' . $this->id . '" data-name="' . $this->name . '" data-toggle="modal" data-target="#deleteModel" class="btn btn-icon btn-xs btn-danger delete-item"><i class="flaticon2-trash"></i></button>';
 //        }
         return $button;
+    }
+
+    public function getRateAverageAttribute()
+    {
+        $rate_av = Rate::query()->where('worker_id', $this->id)->avg('rating');
+        return (int)$rate_av ?? 0;
     }
 }

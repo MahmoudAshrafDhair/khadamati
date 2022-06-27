@@ -67,7 +67,6 @@
                 </li>
 
 
-
                 <li class="menu-item" aria-haspopup="true">
                     <a href="{{route('admin.sub.categories.index')}}" class="menu-link">
                         <i class="menu-icon flaticon-earth-globe"></i>
@@ -103,12 +102,89 @@
                     </a>
                 </li>
 
-{{--                <li class="menu-item" aria-haspopup="true">--}}
-{{--                    <a href="{{route('admin.days.index')}}" class="menu-link">--}}
-{{--                        <i class="menu-icon flaticon-home"></i>--}}
-{{--                        <span class="menu-text">{{__('aside.day')}}</span>--}}
-{{--                    </a>--}}
-{{--                </li>--}}
+                <li class="menu-item" aria-haspopup="true">
+                    <a href="{{route('admin.orders.index')}}" class="menu-link">
+                        <i class="menu-icon flaticon-earth-globe"></i>
+                        <span class="menu-text">{{__('aside.order')}}</span>
+                    </a>
+                </li>
+
+
+                <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+                    <a href="javascript:;" class="menu-link menu-toggle">
+                        <i class="menu-icon flaticon-web"></i>
+                        <span class="menu-text">{{__('aside.pages')}}</span>
+                        <i class="menu-arrow"></i>
+
+                    </a>
+                    <div class="menu-submenu">
+                        <i class="menu-arrow"></i>
+                        <ul class="menu-subnav">
+
+                            <li class="menu-item" aria-haspopup="true">
+                                <a href="{{route('admin.pages.terms')}}" class="menu-link">
+                                    <i class="menu-bullet menu-bullet-line">
+                                        <span></span>
+                                    </i>
+                                    <span class="menu-text">{{__('aside.terms_and_conditions')}}</span>
+                                </a>
+                            </li>
+
+                            <li class="menu-item" aria-haspopup="true">
+                                <a href="{{route('admin.pages.privacy')}}" class="menu-link">
+                                    <i class="menu-bullet menu-bullet-line">
+                                        <span></span>
+                                    </i>
+                                    <span class="menu-text">{{__('aside.privacy_policy')}}</span>
+                                </a>
+                            </li>
+
+
+                        </ul>
+                    </div>
+                </li>
+
+
+                <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+                    <a href="javascript:;" class="menu-link menu-toggle">
+                        <i class="menu-icon flaticon2-phone"></i>
+                        <span class="menu-text">{{__('aside.contacts')}}</span>
+                        <i class="menu-arrow"></i>
+
+                    </a>
+                    <div class="menu-submenu">
+                        <i class="menu-arrow"></i>
+                        <ul class="menu-subnav">
+
+                            <li class="menu-item" aria-haspopup="true">
+                                <a href="{{route('admin.contact.index.user')}}" class="menu-link">
+                                    <i class="menu-bullet menu-bullet-line">
+                                        <span></span>
+                                    </i>
+                                    <span class="menu-text">{{__('aside.user')}}</span>
+                                </a>
+                            </li>
+
+                            <li class="menu-item" aria-haspopup="true">
+                                <a href="{{route('admin.contact.index.worker')}}" class="menu-link">
+                                    <i class="menu-bullet menu-bullet-line">
+                                        <span></span>
+                                    </i>
+                                    <span class="menu-text">{{__('aside.worker')}}</span>
+                                </a>
+                            </li>
+
+
+                        </ul>
+                    </div>
+                </li>
+
+                {{--                <li class="menu-item" aria-haspopup="true">--}}
+                {{--                    <a href="{{route('admin.days.index')}}" class="menu-link">--}}
+                {{--                        <i class="menu-icon flaticon-home"></i>--}}
+                {{--                        <span class="menu-text">{{__('aside.day')}}</span>--}}
+                {{--                    </a>--}}
+                {{--                </li>--}}
 
             </ul>
             <!--end::Menu Nav-->

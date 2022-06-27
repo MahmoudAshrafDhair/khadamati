@@ -4,8 +4,11 @@ use App\Http\Controllers\Dashboard\AdminController;
 use App\Http\Controllers\Dashboard\Auth\AuthController;
 use App\Http\Controllers\Dashboard\CategoryController;
 use App\Http\Controllers\Dashboard\CityController;
+use App\Http\Controllers\Dashboard\ContactController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\DayController;
+use App\Http\Controllers\Dashboard\OrderController;
+use App\Http\Controllers\Dashboard\PagesController;
 use App\Http\Controllers\Dashboard\RoleController;
 use App\Http\Controllers\Dashboard\SliderController;
 use App\Http\Controllers\Dashboard\SubCategoryController;
@@ -133,6 +136,30 @@ Route::group(
             Route::post('/destroy', [SliderController::class, 'destroy'])->name('admin.sliders.destroy');
         });
 
+        /////////////////////////////////////// Order Management //////////////////////////////
+        Route::group(['prefix' => 'orders'], function () {
+            Route::get('/', [OrderController::class, 'index'])->name('admin.orders.index');
+            Route::get('/show/{id}', [OrderController::class, 'show'])->name('admin.orders.show');
+            Route::post('/destroy', [OrderController::class, 'destroy'])->name('admin.orders.destroy');
+        });
+
+        /////////////////////////////////////// Pages Management //////////////////////////////
+        Route::group(['prefix' => 'pages'], function () {
+            Route::get('/Terms-and-Conditions', [PagesController::class, 'termsAndConditions'])->name('admin.pages.terms');
+            Route::post('/update-Terms-and-Conditions', [PagesController::class, 'updateTermsAndConditions'])->name('admin.pages.terms.update');
+            Route::get('/privacy-policy', [PagesController::class, 'privacyPolicy'])->name('admin.pages.privacy');
+            Route::post('/update-privacy-policy', [PagesController::class, 'updatePrivacyPolicy'])->name('admin.pages.privacy.update');
+        });
+
+        /////////////////////////////////////// Contact Us Management //////////////////////////////
+        Route::group(['prefix' => 'contact-us'], function () {
+            Route::get('/user', [ContactController::class, 'index_user'])->name('admin.contact.index.user');
+            Route::get('/user/show/{id}', [ContactController::class, 'show_user'])->name('admin.contact.show.user');
+            Route::post('/user/destroy', [ContactController::class, 'destroy_user'])->name('admin.contact.destroy.user');
+            Route::get('/worker', [ContactController::class, 'index_worker'])->name('admin.contact.index.worker');
+            Route::get('/worker/show/{id}', [ContactController::class, 'show_worker'])->name('admin.contact.show.worker');
+            Route::post('/worker/destroy', [ContactController::class, 'destroy_worker'])->name('admin.contact.destroy.worker');
+        });
     });
 });
 

@@ -21,6 +21,8 @@ class WorkerResource extends JsonResource
             'phone' => $this->phone,
             'active' => $this->active,
             'city' => $this->city->name,
+            'rating' => $this->rate_average,
+            'image' => $this->image == null ? asset('aassets/image/guest-user.jpg') : asset('storage/'.$this->image),
         ];
     }
 }

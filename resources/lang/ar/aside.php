@@ -12,4 +12,9 @@ return [
     'user' => 'المستخدمين',
     'worker' => 'الحرفيين',
     'slider' => 'سلايدر',
+    'order' => 'الطلبات',
+    'pages' => 'الصفحات',
+    'terms_and_conditions' => 'الشروط و الاحكام',
+    'privacy_policy' => 'سياسة الخصوصية',
+    'contacts' => 'اتصل بنا',
 ];

@@ -59,6 +59,7 @@ class UserController extends Controller
         }
         $data['password'] = Hash::make($request->password);
         $data['code'] = 1;
+        $data['active'] = 1;
         User::query()->create($data);
         toastr()->success(__('message.add_toastr'));
         return redirect()->route('admin.users.index');
