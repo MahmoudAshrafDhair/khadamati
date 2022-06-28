@@ -29,7 +29,9 @@ class User extends Authenticatable
         'active',
         'city_id',
         'fcm',
-        'image'
+        'image',
+        'forget_status',
+        'forget_code',
     ];
 
     protected $dates = ['deleted_at'];

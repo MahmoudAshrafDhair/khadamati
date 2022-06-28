@@ -42,9 +42,12 @@ return [
     'welcome' => 'Welcome to the Rating Portal control panel',
     'copywriter' => 'All Rights Reserved To The Rating Portal Site',
     'code_Verification' => 'Verification Code',
+    'code_forget_password' => 'Password Recovery',
 
     'account_confirmation' => 'Account Confirmation',
-    'account_confirmation_message' => 'We are glad to have you registered in the Rating Portal',
+    'account_forget_password' => 'Password recovery code',
+    'account_confirmation_message' => 'We are glad to have you registered in the Khadamati',
+    'account_forget_password_message' => 'We are pleased that you contacted us to retrieve the password on the services site',
     'hello' => 'Hello',
     'verification_code' => 'Verification code is : ',
     'thank' => 'Thank you ...',

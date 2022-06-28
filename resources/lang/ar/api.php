@@ -24,4 +24,8 @@ return [
     'update_appointment_success' => 'تم تعديل الموعد بنجاح',
     'appointment_use' => 'هذا الموعد محجوز مسبقا',
     'worker_updated_success' => 'تم تعديل الحرفي بنجاح',
+    'user_email_not_found' => 'لا يوجد مستخدم يحمل هذا الايميل',
+    'user_found_email_success' => 'يرجى مراجعة البريد الالكتروني لادخال كود التحقق',
+    'user_code_success' => 'كود التحقق صحيح',
+    'user_forget_password_success' => 'تم اعادة تعين كلمة المرور بنجاح',
 ];

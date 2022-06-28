@@ -3,8 +3,10 @@
 use App\Http\Controllers\API\GeneralController;
 use App\Http\Controllers\API\User\AuthController;
 use App\Http\Controllers\API\User\FavoriteController;
+use App\Http\Controllers\API\User\ForgetPasswordController;
 use App\Http\Controllers\API\User\OrderController;
 use App\Http\Controllers\API\User\ProfileController;
+use App\Http\Controllers\API\Worker\WorkerForgetPasswordController;
 use App\Http\Controllers\API\Worker\WorkerOrderController;
 use App\Http\Controllers\API\Worker\WorkerProfileController;
 use Illuminate\Http\Request;
@@ -29,16 +31,27 @@ Route::get('/pages',[GeneralController::class,'getPages']);
 Route::post('/contact-us',[GeneralController::class,'contactUs']);
 
 Route::get('/show',[AuthController::class,'showMessage'])->name('login');
+
+
+
 Route::group(['middleware' => 'guest:user-api','prefix' => 'user'],function (){
     Route::post('/register',[AuthController::class,'register']);
     Route::post('/check-code',[AuthController::class,'check_code']);
     Route::post('/login',[AuthController::class,'login']);
+    /////////////////////////// Forget Password /////////////////////////////////////////
+    Route::post('/forget-password-check-email',[ForgetPasswordController::class,'checkEmail']);
+    Route::post('/forget-password-check-code',[ForgetPasswordController::class,'checkCode']);
+    Route::post('/forget-password-change-password',[ForgetPasswordController::class,'changePassword']);
 });
 
 Route::group(['middleware' => 'guest:worker-api','prefix' => 'worker'],function (){
     Route::post('/register',[\App\Http\Controllers\API\Worker\AuthController::class,'register']);
     Route::post('/check-code',[\App\Http\Controllers\API\Worker\AuthController::class,'check_code']);
     Route::post('/login',[\App\Http\Controllers\API\Worker\AuthController::class,'login']);
+    /////////////////////////// Forget Password /////////////////////////////////////////
+    Route::post('/forget-password-check-email',[WorkerForgetPasswordController::class,'checkEmail']);
+    Route::post('/forget-password-check-code',[WorkerForgetPasswordController::class,'checkCode']);
+    Route::post('/forget-password-change-password',[WorkerForgetPasswordController::class,'changePassword']);
 });
 
 Route::group(['middleware' => 'auth:user-api','prefix' => 'user'],function (){

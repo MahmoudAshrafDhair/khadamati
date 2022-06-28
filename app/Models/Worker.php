@@ -24,7 +24,9 @@ class Worker extends Model
         'city_id',
         'fcm',
         'subCategory_id',
-        'image'
+        'image',
+        'forget_status',
+        'forget_code',
     ];
     protected $dates = ['deleted_at'];
 

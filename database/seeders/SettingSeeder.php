@@ -17,16 +17,6 @@ class SettingSeeder extends Seeder
         Setting::query()->create([
             'Terms_and_Conditions' => ['ar' => '', 'en' => ''],
             'privacy_policy' => ['ar' => '', 'en' => ''],
-//            'logo' => null,
-//            'facebook_link' => null,
-//            'twitter_link' => null,
-//            'instagram_link' => null,
-//            'who_are_we' => null,
-//            'who_are_we_image' => null,
-//            'goal' => null,
-//            'goal_image' => null,
-//            'vision' => null,
-//            'vision_image' => null,
         ]);
     }
 }

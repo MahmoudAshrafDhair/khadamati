@@ -104,7 +104,7 @@ class WorkerController extends Controller
         $data['password'] = $request->has('password') && $request->password != null ? Hash::make($request->password) : $worker->password;
         $worker->update($data);
         toastr()->success(__('message.update_toastr'));
-        return redirect()->route('admin.users.index');
+        return redirect()->route('admin.workers.index');
     }
 
     public function destroy(Request $request){

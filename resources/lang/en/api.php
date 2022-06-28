@@ -24,5 +24,9 @@ return [
     'update_appointment_success' => 'Appointment updated successfully',
     'appointment_use' => 'This appointment is already booked',
     'worker_updated_success' => 'Worker Update Successfully',
+    'user_email_not_found' => 'There is no user with this email',
+    'user_found_email_success' => 'please check the email to enter the verification code',
+    'user_code_success' => 'Valid verification code',
+    'user_forget_password_success' => 'The password has been reset successfully',
 
 ];

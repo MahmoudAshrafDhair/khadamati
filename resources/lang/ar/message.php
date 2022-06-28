@@ -42,10 +42,13 @@ return [
     'welcome' => 'اهلا و سهلا في لوحة تحكم بوابة التقيم',
     'copywriter' => 'جميع حقوق النشر محفوظة لموقع بوابة التقيم',
     'code_Verification' => 'كود التحقق',
+    'code_forget_password' => 'استرجاع كلمة المرور',
 
 
     'account_confirmation' => 'تاكيد الحساب',
-    'account_confirmation_message' => 'سعدنا بتسجيلكم في بوابة تقييم',
+    'account_forget_password' => 'كود استرجاع كلمةالمرور',
+    'account_confirmation_message' => 'سعدنا بتسجيلكم في موقع خدمات',
+    'account_forget_password_message' => 'سعدنا بتواصلك معنا لاسترجاع كلمة المرور في موقع خدمات',
     'hello' => 'مرحبا',
     'verification_code' => 'كود التحقق هو : ',
     'thank' => 'شكرا لكم ...',
