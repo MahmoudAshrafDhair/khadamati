@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Auth;
 use Spatie\Translatable\HasTranslations;
 
 class SubCategory extends Model
@@ -18,6 +19,8 @@ class SubCategory extends Model
     protected $fillable = ['name', 'image','category_id','order_total'];
 
     protected $dates = ['deleted_at'];
+
+    protected $appends = ['is_favorite'];
 
     protected static function boot()
     {
@@ -53,5 +56,17 @@ class SubCategory extends Model
         $button .= '&nbsp;&nbsp;<button  title="Delete Sub Category" type="button" data-id="' . $this->id . '" data-name="' . $this->name . '" data-toggle="modal" data-target="#deleteModel" class="btn btn-icon btn-xs btn-danger delete-item"><i class="flaticon2-trash"></i></button>';
 //        }
         return $button;
+    }
+
+    public function getIsFavoriteAttribute(){
+        if(Auth::guard('user-api')->check()){
+            $favorite = Favorite::query()->where('subCategory_id',$this->id)->where('user_id',Auth::guard('user-api')->id())->first();
+            if($favorite){
+                return 1;
+            }else{
+                return 0;
+            }
+        }
+        return 0;
     }
 }

@@ -40,7 +40,7 @@ class SendNotification implements ShouldQueue
      */
     public function handle()
     {
-        if ($this->platform == 'web') {
+        if ($this->platform == 'user') {
             $users = User::query()->where('platform', 'web')->get();
             foreach ($users as $user) {
                 Notifications::create([
@@ -56,7 +56,7 @@ class SendNotification implements ShouldQueue
             }
 
 
-        } elseif ($this->platform == 'andriod' ) {
+        } elseif ($this->platform == 'worker' ) {
             $users = User::Active()->where('platform', 'andriod')->get();
 
             foreach ($users as $user) {
@@ -73,7 +73,7 @@ class SendNotification implements ShouldQueue
                 ]);
                 $response = $this->push_notification_order($user,$this->title, $this->body,$user->platform);
             }
-        }elseif ($this->platform == 'ios' ) {
+        }elseif ($this->platform == '' ) {
             $users = User::Active()->where('platform', 'ios')->get();
 
             foreach ($users as $user) {

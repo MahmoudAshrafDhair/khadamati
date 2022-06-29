@@ -20,6 +20,7 @@ class SubCategoryResource extends JsonResource
             'worker_count' => $this->workers->count(),
             'image' => $this->image == null ? asset('assets/image/defoult.png') : asset('storage/'.$this->image),
             'category' => $this->category->name,
+            'is_favorite' => $this->is_favorite,
         ];
     }
 }

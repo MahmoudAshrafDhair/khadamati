@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API\User;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\UserResource;
+use App\Jobs\SendNotification;
 use App\Mail\VerificationEmail;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -134,6 +135,23 @@ class AuthController extends Controller
 
     public function showMessage(){
         return $this->sendResponse([],"NotAuthr");
+    }
+
+    public function store(Request $request)
+    {
+//        if (filled($request->image)) {
+//            $image = $request->image->hashName();
+//            uploadImage('notification_mobile_image', $request->image);
+//        } else {
+            $image = "";
+        //}
+
+
+        $this->dispatch(new SendNotification("dfmnfd", "fkdgv", "1", "",));
+        return response()->json([
+            'status' => true,
+
+        ]);
     }
 
 
